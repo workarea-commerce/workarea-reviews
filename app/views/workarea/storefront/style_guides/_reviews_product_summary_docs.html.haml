@@ -1,0 +1,13 @@
+%p With reviews:
+.style-guide__example-block
+  .product-summary
+    %p.product-summary__media
+      = link_to('#', class: 'product-summary__media-link') do
+        = image_tag('workarea/storefront/style_guide_product.jpg', alt: 'Product Name', class: 'product-summary__media-image')
+    .product-summary__info
+      %p.product-summary__name= link_to('Product Name', '#')
+      .product-summary__price-group
+        %p.product-summary__price
+          %span= number_to_currency(109.99)
+      = rating_stars(3.5, aggregate: true)
+    %p.product-summary__quickview= link_to('Quick View', '#', class: 'button button--small', rel: 'nofollow', data: { dialog_button: '' })

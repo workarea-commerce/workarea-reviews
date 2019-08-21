@@ -1,0 +1,3 @@
+%li{ class: "primary-nav__item" }
+  = link_to reviews_path, class: navigation_link_classes(reviews_path) do
+    = t('workarea.admin.reviews.menu.product_reviews', count: Workarea::Review.pending.count)

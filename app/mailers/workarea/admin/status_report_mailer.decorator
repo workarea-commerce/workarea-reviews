@@ -1,0 +1,8 @@
+module Workarea
+  decorate Admin::StatusReportMailer, with: :reviews do
+    def report(email, date)
+      @reviews_summary =  ReviewSummary.new
+      super
+    end
+  end
+end

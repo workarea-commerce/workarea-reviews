@@ -1,0 +1,9 @@
+module Workarea
+  decorate Admin::CatalogProductsController, with: :reviews do
+    decorated { helper Admin::ReviewsHelper }
+
+    def reviews
+      @reviews = Review.find_for_product(@product.id, true)
+    end
+  end
+end

@@ -1,0 +1,7 @@
+module Workarea
+  decorate Admin::ProductViewModel, with: :reviews do
+    def pending_reviews_count
+      Review.pending.where(product_id: model.id).count
+    end
+  end
+end

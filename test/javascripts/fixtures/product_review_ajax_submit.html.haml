@@ -1,0 +1,4 @@
+.view
+  = form_tag '/foo/bar', data: { product_review_ajax_submit: '' } do
+    = text_field_tag 'baz', nil, required: true
+    = submit_tag

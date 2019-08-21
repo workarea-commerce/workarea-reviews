@@ -1,0 +1,17 @@
+module Workarea
+  decorate Sort, with: :reviews do
+    class_methods do
+      def top_rated
+        new(I18n.t('workarea.sorts.top_rated'), :top_rated, :'sorts.rating', :desc)
+      end
+
+      def highest_rating
+        new(I18n.t('workarea.sorts.highest_rating'), :highest_rating, :rating, :desc)
+      end
+
+      def lowest_rating
+        new(I18n.t('workarea.sorts.lowest_rating'), :lowest_rating, :rating, :asc)
+      end
+    end
+  end
+end

@@ -1,0 +1,5 @@
+product_id,rating,user_info,body,title,approved
+PROD1,3,"MD","Worked well for what I needed",,true
+PROD2,4,"BC","Exactly what I was looking for.",,false
+PROD2,5,"CH from Philadelphia","Greatest thing since avocados","OMG wow",false
+PROD3,2,"DB","Was not impressed, could have been built better.","Disappointed",true

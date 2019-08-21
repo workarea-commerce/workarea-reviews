@@ -1,0 +1,11 @@
+module Workarea
+  decorate Fulfillment, with: :reviews do
+    def ship_items(tracking_number, shipped_items)
+      super.tap do |result|
+        if result && Workarea.config.send_transactional_emails
+          ScheduleReviewRequests.perform_async(id, shipped_items)
+        end
+      end
+    end
+  end
+end

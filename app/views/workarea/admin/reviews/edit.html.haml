@@ -1,0 +1,77 @@
+- @page_title = @review.name
+
+.view
+  .view__header
+    .grid.grid--middle.grid--right
+      .grid__cell.grid__cell--50
+        .view__heading
+          = link_to_index_for(@review)
+          %h1= @review.name
+      .grid__cell.grid__cell--25
+        = render_aux_navigation_for(@review)
+
+  .view__container.view__container--narrow
+    - @review.errors.full_messages.each do |message|
+      = render_message 'error', message
+
+    = form_tag review_path(@review), method: :patch, id: 'sku_form' do
+      .section
+        .grid.grid--huge.grid--middle
+          .grid__cell.grid__cell--50-at-medium
+            .property
+              = label_tag 'review_title', t('workarea.admin.fields.title'), class: 'property__name'
+              = text_field_tag 'review[title]', @review.title, class: 'text-box'
+
+          .grid__cell.grid__cell--50-at-medium
+            .grid.grid--right.grid--auto
+              .grid__cell
+                .property
+                  %span.property__name= t('workarea.admin.reviews.approved')
+                  = toggle_button_for 'review[approved]', @review.approved
+
+        .property
+          = label_tag 'review_body', t('workarea.admin.fields.body'), class: 'property__name'
+          = text_area_tag 'review[body]', @review.body, class: 'text-box text-box--multi-line'
+
+        .grid.grid--huge
+          .grid__cell.grid__cell--50.grid__cell--25-at-medium
+            .property
+              = label_tag 'review_rating', t('workarea.admin.fields.rating'), class: 'property__name'
+              = @review.rating
+          .grid__cell.grid__cell--50.grid__cell--25-at-medium
+            .property
+              = label_tag 'verified', t('workarea.admin.fields.verified'), class: 'property__name'
+              = t("workarea.admin.#{@review.verified?}")
+          .grid__cell.grid__cell--50.grid__cell--25-at-medium
+            .property
+              = label_tag 'review_updated_at', t('workarea.admin.fields.updated_at'), class: 'property__name'
+              = local_time(@review.updated_at)
+          .grid__cell.grid__cell--50.grid__cell--25-at-medium
+            .property
+              = label_tag 'review_created_at', t('workarea.admin.fields.created_at'), class: 'property__name'
+              = local_time(@review.created_at)
+
+          .grid__cell.grid__cell--50.grid__cell--25-at-medium
+            .property
+              = label_tag 'review_product_id', t('workarea.admin.fields.product_id'), class: 'property__name'
+              - if @review.product.nil?
+                = @review.product_id
+              - else
+                = link_to @review.product_id, catalog_product_path(@review.product)
+          - if @review.anonymous?
+            .grid__cell.grid__cell--50.grid__cell--25-at-medium
+              .property
+                = label_tag 'review_name', t('workarea.admin.fields.name'), class: 'property__name'
+                = [@review.first_name, @review.last_name].join(' ')
+            .grid__cell.grid__cell--50.grid__cell--25-at-medium
+              .property
+                = label_tag 'review_email', t('workarea.admin.fields.email'), class: 'property__name'
+                = @review.email.presence || '--'
+
+
+      .workflow-bar
+        .grid.grid--middle
+          .grid__cell.grid__cell--50
+            = link_to t('workarea.admin.actions.delete'), review_path(@review), data: { method: 'delete', confirm: t('workarea.admin.actions.delete_confirmation')}, class: 'workflow-bar__button workflow-bar__button--delete'
+          .grid__cell.grid__cell--50.align-right
+            .grid__cell= button_tag t('workarea.admin.reviews.edit.save_review'), value: 'save_review', class: 'workflow-bar__button workflow-bar__button--update'

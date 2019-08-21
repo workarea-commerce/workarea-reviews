@@ -1,0 +1,9 @@
+module Workarea
+  decorate Search::CategoryBrowse, with: :reviews do
+    class_methods do
+      def available_sorts
+        super.tap { |sorts|  sorts << Sort.top_rated }
+      end
+    end
+  end
+end

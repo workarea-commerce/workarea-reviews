@@ -1,0 +1,13 @@
+module Workarea
+  decorate Storefront::ProductViewModel, with: :reviews do
+    def has_reviews?
+      total_reviews > 0
+    end
+
+    def reviews
+      @reviews ||= Review
+        .find_for_product(model.id)
+        .order(created_at: :desc)
+    end
+  end
+end

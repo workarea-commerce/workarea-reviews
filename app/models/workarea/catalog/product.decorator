@@ -1,0 +1,15 @@
+module Workarea
+  decorate Catalog::Product, with: :reviews do
+    decorated do
+      # @!attribute total_reviews
+      #   @return [Integer] the total number of approved reviews
+      #
+      field :total_reviews, type: Integer, default: 0
+
+      # @!attribute average_rating
+      #   @return [Float] the average rating of approved reviews
+      #
+      field :average_rating,  type: Float
+    end
+  end
+end

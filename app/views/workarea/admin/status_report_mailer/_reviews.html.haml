@@ -1,0 +1,5 @@
+%tr
+  %td
+    %h2= t('workarea.admin.status_report_mailer.reviews.title')
+    %p= t('workarea.admin.status_report_mailer.reviews.recent_html', count: link_to(pluralize(@reviews_summary.recent_reviews_count, t('workarea.admin.status_report_mailer.reviews.review')), reviews_url(sort: :newest), style: "color: #{@link_color};"))
+    %p= t('workarea.admin.status_report_mailer.reviews.pending_html', count: link_to(pluralize(@reviews_summary.pending_reviews_count, t('workarea.admin.status_report_mailer.reviews.review')), reviews_url(state: %w(Pending)), style: "color: #{@link_color};"))

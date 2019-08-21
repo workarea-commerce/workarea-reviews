@@ -1,0 +1,22 @@
+- content_for :preheader_text do
+  = @content
+
+%tr
+  %td
+    != @content
+
+    %table.product-grid
+      %tr
+        %td.stack-column-center
+          %table.product-grid__product{ role: 'presentation', width: '100%' }
+            %tr
+              %td.product-grid__image
+                = link_to product_url(@product), class: 'product-grid__link' do
+                  = image_tag(product_image_url(@product.primary_image, :medium_thumb), alt: @product.name)
+            %tr
+              %td.product-grid__info
+                = link_to product_url(@product), class: 'product-grid__link' do
+                  .product-grid__name= @product.name
+
+    %p
+      %strong= link_to t('workarea.storefront.email.review_request.link'), review_request_url(@request.token), class: 'button'

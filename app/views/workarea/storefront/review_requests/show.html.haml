@@ -1,0 +1,44 @@
+- @title = t('workarea.storefront.reviews.write_a_review_title', name: @product.browser_title)
+
+.write-review.view
+  %h1= t('workarea.storefront.reviews.write_a_review_title', name: @product.name)
+
+  .grid
+    .grid__cell.grid__cell--25
+      .product-summary{ itemscope: true, itemtype: 'http://schema.org/Product' }
+        = render 'workarea/storefront/products/summary', product: @product
+
+    .grid__cell.grid__cell--75
+      - unless request.get?
+        - if @review.errors.any?
+          - @review.errors.full_messages.each do |message|
+            = render_message 'error', message, data: { analytics: validation_error_analytics_data('review').to_json }
+
+      = form_tag complete_review_request_path(@request.token), method: 'post', id: 'review_request_form' do
+        .property
+          = label_tag 'review[rating]', nil, class: 'property__name' do
+            %span.property__text= t('workarea.storefront.reviews.rating')
+          %ul.write-review__ratings
+            - (1..5).each do |i|
+              %li.write-review__rating
+                = radio_button_tag 'review[rating]', i, (i == @review.rating || i == 5) ? true : false, class: 'write-review__rating-input', data: { rating_button: '' }
+                = label_tag "review[rating][#{i}]", nil, class: 'write-review__star' do
+                  = inline_svg 'workarea/storefront/icons/star.svg', class: 'write-review__star-icon', title: t('workarea.storefront.reviews.stars', count: i)
+
+        .property
+          = label_tag 'review[title]', nil, class: 'property__name' do
+            %span.property__text= t('workarea.storefront.reviews.review_title')
+            %span.property__requirement.property__requirement--optional= t('workarea.storefront.forms.optional')
+          .value= text_field_tag 'review[title]', @review.title, class: 'text-box'
+
+        .property
+          = label_tag 'review[body]', nil, class: 'property__name' do
+            %span.property__requirement.property__requirement--required= t('workarea.storefront.forms.required')
+            %span.property__text= t('workarea.storefront.reviews.your_review')
+          .value= text_area_tag 'review[body]', @review.body, class: 'text-box text-box--multi-line', required: true
+
+        .property= recaptcha_tags
+
+        .grid.grid--auto
+          %p.grid__cell= button_tag t('workarea.storefront.reviews.submit'), value: 'submit_review', class: 'button', data: { disable_with: loading_indicator(t('workarea.storefront.reviews.submit_disabled')) }
+          %p.grid__cell= link_to t('workarea.storefront.forms.cancel'), product_path(@product), class: 'text-button', data: { dialog_close_button: '' }

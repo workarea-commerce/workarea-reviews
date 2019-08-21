@@ -1,0 +1,17 @@
+#rating.style-guide__subsection
+
+  %h3= link_to_style_guide('components', 'rating')
+
+  %p Displays a graphical rating scale for a numerical rating (1.0 - 5.0). Use the <code>rating_stars(rating, options = {})</code> helper to generate the rating stars.
+
+  %h4 Options
+  %ul
+    %li
+      <code>aggregate</code> (default: false)
+      %ul
+        %li Passing <code>aggregate: true</code> will change schema.org rating type from `reviewRating` to `aggregateRating` (an average rating from multiple reviews). See <a href="https://schema.org/AggregateRating">https://schema.org/AggregateRating</a> for more info.
+
+  - [1.5, 2.0, 3.75, 4.1, 4.8].each do |rating|
+    %p Example: rating of #{rating}
+    .style-guide__example-block
+      = rating_stars(rating, aggregate: true)

@@ -1,0 +1,104 @@
+en:
+  workarea:
+    admin:
+      activities:
+        review: Review
+        review_create_html: Created a %{name}
+        review_destroy_html: Removed a %{name}
+        review_update_html: updated %{fields} on the %{name} review
+      catalog:
+        dashboard_link: Dashboard link
+      catalog_products:
+        reviews_link: All Reviews
+        pending: (%{pending} Pending)
+      dashboards:
+        marketing:
+          reviews: Product reviews
+      fields:
+        body: Body
+        title: Title
+        rating: Rating
+        approved: Approved
+        auto_approve: Approve All Reviews
+        verified: Verified Purchaser
+      reviews:
+        approved: Approved
+        catalog_products_cards:
+          title: Reviews
+        edit:
+          review: Review
+          review_for_html: Review for %{product_link}
+          save_review: Save Review
+          title: Title
+          view_product: View Product
+          view_user: View User
+        flash_messages:
+          destroyed: Review has been removed.
+          updated: Review has been saved
+        index:
+          dashboard_link: Marketing dashboard
+          heading: Reviews
+          page_title: Reviews
+          review: Review
+          review_for: Review for %{product}
+        menu:
+          product_reviews:
+            one: Product Reviews (%{count})
+            other: Product Reviews (%{count})
+            zero: Product Reviews
+        pending: Pending
+        summary:
+          type: Review
+        unverified: Unverified
+        verified: Verified
+      status_report_mailer:
+        reviews:
+          pending_html: "%{count} awaiting approval."
+          review: review
+          recent_html: "%{count} submitted within the last day."
+          title: Reviews
+    sorts:
+      top_rated: Top Rated
+      highest_rating: Highest Rating
+      lowest_rating: Lowest Rating
+    storefront:
+      email:
+        review_request:
+          subject: Review your recent purchase of %{product}
+          link: Write a review
+      fields:
+        username: Username
+      review_requests:
+        flash_messages:
+          already_submitted: This review has already been submitted.
+      reviews:
+        flash_messages:
+          created: Your review has been submitted. Thanks!
+          failure: There was a problem saving your review.
+        heading: Reviews
+        out_of: out of
+        purchase_requirement: A purchase is required before you can post a review
+        rating: Rating
+        read_reviews: Read Reviews
+        review_for: Review for %{product}
+        review_title: Review Title
+        reviews:
+          one: "%{count} review"
+          other: "%{count} reviews"
+          zero: "%{count} reviews"
+        stars:
+          one: 1 star
+          other: "%{count} stars"
+        submit: Submit Review
+        submit_disabled: Submitting Review...
+        total_spent_validation: must make a purchase before creating a review
+        verified_purchaser: Verified Purchaser
+        write_a_review: Write a Review
+        write_a_review_title: Write a Review for "%{name}"
+        your_review: Your Review
+        notes:
+          display_name: Only the first letter of your name will be displayed.
+          email: Will only be used if we need to get in touch with you.
+      users:
+        first_name: First name
+        last_name: Last name

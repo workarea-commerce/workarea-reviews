@@ -1,0 +1,9 @@
+module Workarea
+  decorate Search::Storefront::Product, with: :reviews do
+    def sorts
+      super.merge(
+        rating: Review.find_sorting_score(model.id)
+      )
+    end
+  end
+end

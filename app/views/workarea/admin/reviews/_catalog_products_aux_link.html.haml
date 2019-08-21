@@ -1,0 +1,5 @@
+.grid__cell
+  = link_to reviews_path(q: %{"#{model.id}"}, sort: 'newest') do
+    = t('workarea.admin.catalog_products.reviews_link')
+    - if model.pending_reviews_count > 0
+      = t('workarea.admin.catalog_products.pending', pending: model.pending_reviews_count)
