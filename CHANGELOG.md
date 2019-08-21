@@ -1,20 +1,3 @@
-Workarea Reviews 3.0.7 (2019-06-11)
---------------------------------------------------------------------------------
-
-*   Add Rake Task for Reconciling Verified Purchasers
-
-    Reviews can have a `:verified` badge associated with the content, but
-    for those upgrading to a newer version some data needs to be changed in
-    order to make this happen retroactively for older reviews. Add a Rake
-    task for adding the `:verified` field to reviews where the user actually
-    bought the product. For any reviews that are made after the upgrade,
-    this will be automatically assigned as the review is being created.
-
-    REVIEWS-146
-    Tom Scott
-
-
-
 Workarea Reviews 3.0.6 (2019-04-16)
 --------------------------------------------------------------------------------
 

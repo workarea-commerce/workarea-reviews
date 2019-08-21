@@ -1,5 +1,5 @@
 Workarea.configure do |config|
-  config.seeds << 'Workarea::ReviewSeeds'
+  config.seeds.insert('Workarea::InsightsSeeds', 'Workarea::ReviewSeeds')
 
   config.jump_to_navigation.merge!('Product Reviews' => :reviews_path)
 
@@ -10,6 +10,8 @@ Workarea.configure do |config|
   )
 
   config.data_file_ignored_fields << %w(total_reviews average_rating)
+
+  config.insights_model_classes << 'Workarea::User'
 
   # The amount of time before a Review::Request will auto expire
   # and be removed from the collection

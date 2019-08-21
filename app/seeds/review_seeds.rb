@@ -13,15 +13,19 @@ module Workarea
     private
 
     def create_review(product)
+      user = rand(3) < 2 ? Workarea::User.sample : nil
+
       Workarea::Review.create!(
         product_id: product.id,
-        user_id: BSON::ObjectId.new,
+        user_id: user&.id,
         rating: rand(5) + 1,
         title: Faker::Lorem.sentence,
         body: Faker::Lorem.paragraph,
         approved: [true, false].sample,
-        user_info: Faker::Internet.user_name,
-        verified: [true, false].sample
+        user_info: user&.name || Faker::Internet.user_name,
+        email: user&.email || Faker::Internet.email,
+        verified: [true, false].sample,
+        created_at: (3..30).to_a.sample.days.ago
       )
     end
 

@@ -3,4 +3,6 @@ git_source(:github) { |repo| "git@github.com:#{repo}.git" }
 
 gemspec
 
-gem 'workarea'
+gem 'byebug'
+
+gem 'workarea', github: 'workarea-commerce/workarea'

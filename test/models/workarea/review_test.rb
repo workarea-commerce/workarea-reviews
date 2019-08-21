@@ -2,6 +2,26 @@ require 'test_helper'
 
 module Workarea
   class ReviewTest < Workarea::TestCase
+    def product_id
+      'PROD1'
+    end
+
+    def approved
+      @approved ||= create_review(
+        product_id: product_id,
+        rating: 4,
+        approved: true
+      )
+    end
+
+    def unapproved
+      @unapproved ||= create_review(
+        product_id: product_id,
+        rating: 4,
+        approved: false
+      )
+    end
+
     def test_find_for_product_returns_approved_reviews
       assert([approved], Review.find_for_product(product_id))
     end
@@ -69,26 +89,17 @@ module Workarea
       assert_equal(review.body.truncate(50), review.title)
     end
 
-    private
+    def test_find_sorting_score
+      create_review(product_id: 'foo', rating: 4, approved: true)
+      create_review(product_id: 'foo', rating: 5, approved: true)
+      create_review(product_id: 'foo', rating: 5, approved: true)
+      assert_equal(3.38, Review.find_sorting_score('foo').round(2))
 
-    def product_id
-      'PROD1'
-    end
+      create_review(product_id: 'foo', rating: 1, approved: false)
+      assert_equal(3.38, Review.find_sorting_score('foo').round(2))
 
-    def approved
-      @approved ||= create_review(
-        product_id: product_id,
-        rating: 4,
-        approved: true
-      )
-    end
-
-    def unapproved
-      @unapproved ||= create_review(
-        product_id: product_id,
-        rating: 4,
-        approved: false
-      )
+      create_review(product_id: 'foo', rating: 1, approved: true)
+      assert_equal(3.21, Review.find_sorting_score('foo').round(2))
     end
   end
 end

@@ -5,7 +5,8 @@
 
   .grid
     .grid__cell.grid__cell--25
-      .product-summary{ itemscope: true, itemtype: 'http://schema.org/Product' }
+      .product-summary
+        = render_schema_org(product_schema(@product))
         = render 'workarea/storefront/products/summary', product: @product
 
     .grid__cell.grid__cell--75

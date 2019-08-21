@@ -6,7 +6,11 @@ module Workarea
       include Admin::IntegrationTest
 
       def test_updating_a_review
-        review = create_review(product_id: product.id)
+        review = create_review(
+          product_id: product.id,
+          rating: 4,
+          approved: false
+        )
 
         put admin.review_path(review), params: {
           review: { body: 'foo bar', approved: true }

@@ -17,6 +17,6 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.3.0'
 
-  s.add_dependency 'workarea', '~> 3.x', '>= 3.3.x'
+  s.add_dependency 'workarea', '~> 3.x', '>= 3.5.x'
   s.add_dependency 'recaptcha', '~> 4.3.1'
 end

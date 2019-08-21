@@ -1,0 +1,11 @@
+module Workarea
+  decorate Admin::Dashboards::ReportsViewModel, with: :reviews do
+    def reviews_by_product
+      @reviews_by_product ||=
+        Admin::Reports::ReviewsByProductViewModel.wrap(
+          Workarea::Reports::ReviewsByProduct.new(options),
+          options
+        )
+    end
+  end
+end

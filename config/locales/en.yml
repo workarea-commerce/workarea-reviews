@@ -15,12 +15,55 @@ en:
         marketing:
           reviews: Product reviews
       fields:
+        average_rating: Average Rating
         body: Body
         title: Title
         rating: Rating
+        reviews: Reviews
         approved: Approved
         auto_approve: Approve All Reviews
         verified: Verified Purchaser
+        verified_reviews: Verified
+        weighted_average_rating: Weighted Average Rating
+      insights:
+        most_active_reviewers:
+          info: Your customers that are submitting the most reviews.
+          reviews: Reviews
+          title: Most Active Reviewers
+          user: User
+          verified: Verified Reviews
+        most_reviewed_products:
+          title: Most Reviewed Products
+          info: Your products that have received the most reviews.
+          reviews:
+            one: '%{count} Review'
+            other: '%{count} Reviews'
+        top_rated_products:
+          title: Top Rated Products
+          info: Your products with the highest weighted average rating.
+          rating: '%{rating} Rating'
+      reports:
+        reference:
+          terms:
+            average_rating:
+              name: Average Rating
+              description: The sum of all review ratings divided by the total number of reviews.
+            reviews:
+              name: Reviews
+              description: The total number of reviews.
+            verified:
+              name: Verified
+              description: The total number of reviews made by customers who have purchased the product.
+            weighted_average_rating:
+              name: Weighted Average Rating
+              description: A base rating of 3.0, adjusted up or down by each review rating.
+        reviews_by_product:
+          filters:
+            all: All Reviews
+            approved: Approved Reviews
+            unapproved: Unapproved Reviews
+          results_filter: Results Filter
+          title: Reviews By Product
       reviews:
         approved: Approved
         catalog_products_cards:
@@ -66,6 +109,9 @@ en:
         review_request:
           subject: Review your recent purchase of %{product}
           link: Write a review
+          email_action:
+            name: Write Review
+            description: Please review your recent purchase
       fields:
         username: Username
       review_requests:

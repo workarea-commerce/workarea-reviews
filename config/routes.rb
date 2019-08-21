@@ -6,6 +6,10 @@ Workarea::Admin::Engine.routes.draw do
         get :reviews
       end
     end
+
+    resource :report, only: [] do
+      get :reviews_by_product
+    end
   end
 end
 

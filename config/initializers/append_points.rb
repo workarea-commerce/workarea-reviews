@@ -67,4 +67,9 @@ module Workarea
     'admin.marketing_dashboard_navigation',
     'workarea/admin/reviews/dashboard_navigation'
   )
+
+  Workarea.append_partials(
+    'admin.reports_dashboard',
+    'workarea/admin/dashboards/reviews_by_product_card'
+  )
 end

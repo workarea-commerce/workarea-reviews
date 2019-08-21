@@ -95,23 +95,12 @@ module Workarea
     # @return [Float]
     #
     def self.find_sorting_score(product_id)
-      reviews = find_for_product(product_id)
+      reviews = find_for_product(product_id).to_a
+      count = (1..5).each_with_object({}) do |i, memo|
+        memo[i] = reviews.select { |r| r.rating == i }.length + 2
+      end
 
-      votes = [ reviews.select { |r| r.rating == 1 }.length,
-                reviews.select { |r| r.rating == 2 }.length,
-                reviews.select { |r| r.rating == 3 }.length,
-                reviews.select { |r| r.rating == 4 }.length,
-                reviews.select { |r| r.rating == 5 }.length ]
-
-      prior = [2, 2, 2, 2, 2]
-
-      posterior = votes.zip(prior).map { |a, b| a + b }
-      sum = posterior.inject { |a, b| a + b }
-
-      posterior.
-        map.with_index { |v, i| (i + 1) * v }.
-        inject { |a, b| a + b }.
-        to_f / sum
+      count.sum { |rating, count| rating * count }.to_f / count.values.sum
     end
 
     def anonymous?

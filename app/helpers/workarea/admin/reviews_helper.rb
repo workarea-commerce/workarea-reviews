@@ -1,11 +1,12 @@
 module Workarea
   module Admin
     module ReviewsHelper
-      def reviewer_info(model)
-        return model.user_info unless model.user_id.present?
-
-        link_to model.user_info,
-                edit_user_path(model.user_id)
+      def reviews_report_filter_options
+        [
+          [t('workarea.admin.reports.reviews_by_product.filters.all'), nil],
+          [t('workarea.admin.reports.reviews_by_product.filters.approved'), 'approved'],
+          [t('workarea.admin.reports.reviews_by_product.filters.unapproved'), 'unapproved']
+        ]
       end
     end
   end
