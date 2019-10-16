@@ -1,3 +1,18 @@
+Workarea Reviews 3.0.9 (2019-10-16)
+--------------------------------------------------------------------------------
+
+*   Improve performance of review seeds
+
+    REVIEWS-3
+    Matt Duffy
+
+*   Fix ReviewsHelperTest
+
+    REVIEWS-2
+    Matt Duffy
+
+
+
 Workarea Reviews 3.0.9 (2019-08-26)
 --------------------------------------------------------------------------------
 
