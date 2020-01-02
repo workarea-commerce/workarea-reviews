@@ -5,4 +5,4 @@ gemspec
 
 gem 'byebug'
 
-gem 'workarea', github: 'workarea-commerce/workarea'
+gem 'workarea', github: 'workarea-commerce/workarea', branch: 'v3.5-stable'
