@@ -1,3 +1,15 @@
+Workarea Reviews 3.1.1 (2020-01-07)
+--------------------------------------------------------------------------------
+
+*   Fix failing reviews helper test
+
+    Idk how we didn't catch this, like, 6 years ago.
+
+    REVIEWS-5
+    Curt Howard
+
+
+
 Workarea Reviews 3.1.0 (2019-11-26)
 --------------------------------------------------------------------------------
 
