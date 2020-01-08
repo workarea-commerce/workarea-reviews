@@ -36,6 +36,7 @@ task :release do
   system 'git push origin HEAD --follow-tags'
 
   system 'gem build workarea-reviews.gemspec'
+  system "gem push workarea-reviews-#{Workarea::Reviews::VERSION}.gem"
   system "gem push workarea-reviews-#{Workarea::Reviews::VERSION}.gem --host #{host}"
   system "rm workarea-reviews-#{Workarea::Reviews::VERSION}.gem"
 end
