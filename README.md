@@ -78,24 +78,6 @@ Features
 * The first request is sent after a configurable duration has passed (Workarea.config.review_request_initial_delivery_delay)
 * Each consecutive request is sent at a configurable duration (Workarea.config.review_request_secondary_delivery_delay)
 
-reCAPTCHA Configuration
---------------------------------------------------------------------------------
-
-Workarea Reviews utilizes [reCAPTCHA](https://github.com/ambethia/recaptcha) in the review form to prevent abuse. You'll need to configure each environment's secrets file to provide recaptcha keys. For testing and development, the plugin will use the [google provided](https://developers.google.com/recaptcha/docs/faq) testing keys if none are specified in your secrets.
-
-```yaml
-production:
-  recaptcha:
-    site_key: YOUR_SITE_KEY
-    secret_key: YOUR_SECRET_KEY
-```
-
-reCAPTCHA sends its HTTP requests through the proxy automatically if the
-`$HTTP_PROXY` environment variable is set. This is set for you in hosted
-environments.
-
-[Obtain your keys from the reCAPTCHA site](https://www.google.com/recaptcha/admin)
-
 Workarea Commerce Documentation
 --------------------------------------------------------------------------------
 

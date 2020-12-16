@@ -7,7 +7,10 @@ module Workarea
       def new; end
 
       def create
-        if review_can_be_saved? && @create_review.save
+        if invalid_recaptcha?(action: 'review')
+          challenge_recaptcha!
+          render :new, status: 422
+        elsif @create_review.save
           redirect_to product_path(params[:product_id])
           flash[:success] = t('workarea.storefront.reviews.flash_messages.created')
         else

@@ -47,7 +47,7 @@
           %li.write-review__rating
             = radio_button_tag 'review[rating]', i, (i == @review.rating || i == 5) ? true : false, class: 'write-review__rating-input', data: { rating_button: '' }
             = label_tag "review[rating][#{i}]", nil, class: 'write-review__star' do
-              = inline_svg 'workarea/storefront/icons/star.svg', class: 'write-review__star-icon', title: t('workarea.storefront.reviews.stars', count: i)
+              = inline_svg_tag 'workarea/storefront/icons/star.svg', class: 'write-review__star-icon', title: t('workarea.storefront.reviews.stars', count: i)
 
     .property
       = label_tag 'review[title]', nil, class: 'property__name' do
@@ -61,7 +61,7 @@
         %span.property__text= t('workarea.storefront.reviews.your_review')
       .value= text_area_tag 'review[body]', @review.body, class: 'text-box text-box--multi-line', required: true
 
-    .property= recaptcha_tags
+    .property= recaptcha(action: 'review')
 
     .grid.grid--auto
       %p.grid__cell= button_tag t('workarea.storefront.reviews.submit'), value: 'submit_review', class: 'button', data: { disable_with: loading_indicator(t('workarea.storefront.reviews.submit_disabled')) }
