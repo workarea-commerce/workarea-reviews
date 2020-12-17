@@ -1,5 +1,9 @@
 module Workarea
   decorate Admin::ReportsController, with: :reviews do
+    decorated do
+      helper Admin::ReviewsHelper
+    end
+
     def reviews_by_product
       @report = Admin::Reports::ReviewsByProductViewModel.wrap(
         Workarea::Reports::ReviewsByProduct.new(params),

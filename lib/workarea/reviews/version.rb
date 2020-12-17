@@ -1,5 +1,5 @@
 module Workarea
   module Reviews
-    VERSION = '3.1.2'.freeze
+    VERSION = '3.2.0.pre'.freeze
   end
 end

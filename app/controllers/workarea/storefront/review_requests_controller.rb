@@ -7,7 +7,10 @@ module Workarea
       def show; end
 
       def complete
-        if verify_recaptcha(model: @review, env: Rails.env) && @review.save
+        if invalid_recaptcha?(action: 'review')
+          challenge_recaptcha!
+          render :show, status: 422
+        elsif @review.save
           @request.complete!
           Review::Request.cancel_for_orders!(@request.order_id)
 
