@@ -15,7 +15,7 @@ module Workarea
       product = Workarea::Catalog::Product.find(product_id)
       review_data = Review.find_single_aggregates(product_id)
 
-      product.update_attributes!(
+      product.update!(
         total_reviews: review_data[:count],
         average_rating: review_data[:average]
       )

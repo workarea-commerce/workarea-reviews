@@ -51,11 +51,11 @@ module Workarea
       end
 
       def complete!
-        update_attributes(completed_at: Time.current)
+        update(completed_at: Time.current)
       end
 
       def send!
-        update_attributes(sent_at: Time.current)
+        update(sent_at: Time.current)
       end
     end
   end
