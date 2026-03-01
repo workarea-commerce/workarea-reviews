@@ -8,7 +8,7 @@ module Workarea
 
     def order
       @order ||=
-        create_placed_order.tap { |o| o.update_attributes(user_id: user.id) }
+        create_placed_order.tap { |o| o.update(user_id: user.id) }
     end
 
     def user

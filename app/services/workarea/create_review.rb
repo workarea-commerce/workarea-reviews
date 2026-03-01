@@ -24,7 +24,7 @@ module Workarea
 
     def save
       update_user_attributes
-      update_attributes
+      update_review_attributes
 
       return false unless valid?
       review.save.tap { |result| update_review_requests if result }
@@ -48,10 +48,10 @@ module Workarea
 
     def update_user_attributes
       return if !user.present? || user.public_info.present?
-      user.update_attributes(params.slice(:first_name, :last_name))
+      user.update(params.slice(:first_name, :last_name))
     end
 
-    def update_attributes
+    def update_review_attributes
       review.assign_attributes(
         params
           .slice(:rating, :body, :title)

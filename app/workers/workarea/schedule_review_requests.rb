@@ -37,7 +37,7 @@ module Workarea
             Workarea.config.review_request_initial_delivery_delay.from_now
           end
 
-        request.update_attributes(send_after: date_to_send)
+        request.update(send_after: date_to_send)
       end
     end
   end
