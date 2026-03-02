@@ -5,5 +5,5 @@ gemspec
 
 gem 'byebug'
 
-gem 'workarea', github: 'workarea-commerce/workarea'
+gem 'workarea', github: 'workarea-commerce/workarea', branch: 'next'
 gem 'rails-decorators', github: 'workarea-commerce/rails-decorators'
